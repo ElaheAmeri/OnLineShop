@@ -3,7 +3,7 @@
     package="com.example.onlineshop">
 
     <application
-        android:name=".MyApplication"
+        android:name=".di.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/onlineshopiconvectorjpg"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnLineShop">
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

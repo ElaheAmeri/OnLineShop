@@ -1,9 +1,11 @@
-package com.example.onlineshop
+package com.example.onlineshop.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import com.example.onlineshop.MainActivity
+import com.example.onlineshop.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         val splash=findViewById<ImageView>(R.id.imageView)
         splash.alpha=0f
         splash.animate().setDuration(1500).alpha(1f).withEndAction{
-            val intent= Intent(this,MainActivity::class.java)
+            val intent= Intent(this, MainActivity::class.java)
             startActivity(intent)
             overridePendingTransition(androidx.appcompat.R.anim.abc_fade_in,
                 androidx.appcompat.R.anim.abc_fade_out)
