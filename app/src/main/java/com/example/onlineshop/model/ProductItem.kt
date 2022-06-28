@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class OnlineShopItem(
+data class ProductItem(
     @Json(name = "attributes")
     val attributes: List<Any>,
     @Json(name = "average_rating")
@@ -33,13 +33,13 @@ data class OnlineShopItem(
     @Json(name = "date_modified_gmt")
     val dateModifiedGmt: String,
     @Json(name = "date_on_sale_from")
-    val dateOnSaleFrom: Any,
+    val dateOnSaleFrom: Any?,
     @Json(name = "date_on_sale_from_gmt")
-    val dateOnSaleFromGmt: Any,
+    val dateOnSaleFromGmt: Any?,
     @Json(name = "date_on_sale_to")
-    val dateOnSaleTo: Any,
+    val dateOnSaleTo: Any?,
     @Json(name = "date_on_sale_to_gmt")
-    val dateOnSaleToGmt: Any,
+    val dateOnSaleToGmt: Any?,
     @Json(name = "default_attributes")
     val defaultAttributes: List<Any>,
     @Json(name = "description")
@@ -67,7 +67,7 @@ data class OnlineShopItem(
     @Json(name = "_links")
     val links: Links,
     @Json(name = "low_stock_amount")
-    val lowStockAmount: Any,
+    val lowStockAmount: Any?,
     @Json(name = "manage_stock")
     val manageStock: Boolean,
     @Json(name = "menu_order")
@@ -119,7 +119,7 @@ data class OnlineShopItem(
     @Json(name = "status")
     val status: String,
     @Json(name = "stock_quantity")
-    val stockQuantity: Any,
+    val stockQuantity: Any?,
     @Json(name = "stock_status")
     val stockStatus: String,
     @Json(name = "tags")
