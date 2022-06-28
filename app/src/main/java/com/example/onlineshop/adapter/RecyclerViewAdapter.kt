@@ -22,6 +22,7 @@ class RecyclerViewAdapter(var onClickItem: (Int) -> Unit) :
         fun bind(productItem: ProductItem, onClickItem: (Int) -> Unit) {
             tvTitle.text = productItem.name
             tvPrice.text=productItem.price
+            productItem
             Glide.with(context)
                 .load(productItem.images[0].src)
                 .fitCenter()

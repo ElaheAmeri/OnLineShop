@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
-import com.example.onlineshop.R
 import com.example.onlineshop.adapter.RecyclerViewAdapter
 import com.example.onlineshop.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,9 +30,20 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var adapter=RecyclerViewAdapter({})
-        binding.rvHomeFragment.adapter=adapter
-        viewModel.list.observe(viewLifecycleOwner){adapter.submitList(it)}
+        var adapterRvListOflatestProducts=RecyclerViewAdapter({})
+        binding.rvListOflatestProducts.adapter=adapterRvListOflatestProducts
+        viewModel.listOflatestProducts.observe(viewLifecycleOwner){
+            adapterRvListOflatestProducts.submitList(it) }
+
+        var adapterRvListOfMostVisitedProducts=RecyclerViewAdapter({})
+        binding.rvListOfMostVisitedProducts.adapter=adapterRvListOfMostVisitedProducts
+        viewModel.listOflatestProducts.observe(viewLifecycleOwner){
+            adapterRvListOfMostVisitedProducts.submitList(it) }
+
+        var adapterRvListOfBestProducts=RecyclerViewAdapter({})
+        binding.rvListOflatestProducts.adapter=adapterRvListOfBestProducts
+        viewModel.listOfBestProducts.observe(viewLifecycleOwner){
+            adapterRvListOflatestProducts.submitList(it) }
 
     }
 }

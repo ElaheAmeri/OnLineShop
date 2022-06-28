@@ -15,19 +15,41 @@ enum class ApiStatus { LOADING, DONE, ERROR }
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(val productRepository: ProductRepository) :
-ViewModel(){
+ViewModel() {
     val status = MutableLiveData<ApiStatus>()
-    val list = MutableLiveData<List<ProductItem>>()
+    val listOflatestProducts = MutableLiveData<List<ProductItem>>()
+    val listOfMostVisitedProducts = MutableLiveData<List<ProductItem>>()
+    val listOfBestProducts = MutableLiveData<List<ProductItem>>()
 
-    init{
-        getList()
+    init {
+        getlistOflatestProducts()
+        getListOfBestProducts()
+        getListOfMostVisitedProducts()
     }
-    fun getList() {
+
+    fun getlistOflatestProducts() {
         status.value = ApiStatus.LOADING
         viewModelScope.launch {
 
-            list.postValue(productRepository.getListOfProducts("date"))
+            listOflatestProducts.postValue(productRepository.getListOfProducts("date"))
         }
     }
+
+    fun getListOfMostVisitedProducts() {
+        status.value = ApiStatus.LOADING
+        viewModelScope.launch {
+            listOfMostVisitedProducts.postValue(productRepository.getListOfProducts("popularity"))
+        }
+    }
+
+    fun getListOfBestProducts() {
+        status.value = ApiStatus.LOADING
+        viewModelScope.launch {
+            listOfBestProducts.postValue(productRepository.getListOfProducts("rating"))
+        }
+
+    }
+
+
 }
 
