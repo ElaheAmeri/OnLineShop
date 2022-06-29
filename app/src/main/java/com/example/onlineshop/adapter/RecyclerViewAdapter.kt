@@ -1,5 +1,6 @@
 package com.example.onlineshop.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -19,9 +20,10 @@ class RecyclerViewAdapter(var onClickItem: (Int) -> Unit) :
         val ivProduct = view.findViewById<ImageView>(R.id.ivProduct)
         val tvTitle = view.findViewById<TextView>(R.id.tvName)
         val tvPrice = view.findViewById<TextView>(R.id.tvPrice)
+        @SuppressLint("SetTextI18n")
         fun bind(productItem: ProductItem, onClickItem: (Int) -> Unit) {
             tvTitle.text = productItem.name
-            tvPrice.text=productItem.price
+            tvPrice.text=productItem.price+ "تومان"
             productItem
             Glide.with(context)
                 .load(productItem.images[0].src)
