@@ -1,5 +1,7 @@
 package com.example.onlineshop.data
 
+import com.example.onlineshop.model.Category
+import com.example.onlineshop.model.CategoryItemItem
 import com.example.onlineshop.model.ProductItem
 import javax.inject.Inject
 
@@ -8,5 +10,9 @@ class ProductRepository @Inject constructor(val productRemoteDataSource :Product
 
     suspend fun getListOfProducts( orderly:String ):List<ProductItem>{
         return productRemoteDataSource.getListOfProducts(orderly)
+    }
+
+    suspend fun  getCategory():List<CategoryItemItem>{
+        return productRemoteDataSource.getCategory()
     }
 }

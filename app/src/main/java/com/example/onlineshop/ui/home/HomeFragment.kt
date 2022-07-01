@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.onlineshop.adapter.RecyclerViewAdapter
+import com.example.onlineshop.adapter.HomeRecyclerViewAdapter
 import com.example.onlineshop.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,20 +30,25 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var adapterRvListOflatestProducts=RecyclerViewAdapter({})
-        binding.rvListOflatestProducts.adapter=adapterRvListOflatestProducts
-        viewModel.listOflatestProducts.observe(viewLifecycleOwner){
-            adapterRvListOflatestProducts.submitList(it) }
 
-        var adapterRvListOfMostVisitedProducts=RecyclerViewAdapter({})
-        binding.rvListOfMostVisitedProducts.adapter=adapterRvListOfMostVisitedProducts
-        viewModel.listOflatestProducts.observe(viewLifecycleOwner){
-            adapterRvListOfMostVisitedProducts.submitList(it) }
 
-        var adapterRvListOfBestProducts=RecyclerViewAdapter({})
-        binding.rvListOflatestProducts.adapter=adapterRvListOfBestProducts
+        val adapterRvListOflatestProducts = HomeRecyclerViewAdapter({})
+        binding.rvListOflatestProducts.adapter = adapterRvListOflatestProducts
+        viewModel.listOflatestProducts.observe(viewLifecycleOwner) {
+            adapterRvListOflatestProducts.submitList(it)
+        }
+
+        val adapterRvListOfMostVisitProduct=HomeRecyclerViewAdapter({})
+        binding.rvListOfMostVisitedProducts.adapter = adapterRvListOfMostVisitProduct
+        viewModel.listOfMostVisitedProducts.observe(viewLifecycleOwner){
+            adapterRvListOfMostVisitProduct.submitList(it)
+        }
+
+        val adapterRvListOfBestProduct=HomeRecyclerViewAdapter({})
+        binding.rvListOfBestProducts.adapter =adapterRvListOfBestProduct
         viewModel.listOfBestProducts.observe(viewLifecycleOwner){
-            adapterRvListOflatestProducts.submitList(it) }
+            adapterRvListOfBestProduct.submitList(it)
+        }
 
     }
 }

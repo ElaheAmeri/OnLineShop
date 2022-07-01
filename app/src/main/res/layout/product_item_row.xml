@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150sp"
+        android:layout_height="170sp"
         android:padding="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +20,13 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="text"
         android:textColor="@color/black"
         android:layout_margin="8dp"
+        android:minLines="2"
+        android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="@+id/ivProduct"
         app:layout_constraintStart_toStartOf="@+id/ivProduct"

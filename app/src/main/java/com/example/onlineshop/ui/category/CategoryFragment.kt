@@ -5,12 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.onlineshop.R
+import com.example.onlineshop.adapter.CategoryRecyclerViewAdapter
+import com.example.onlineshop.databinding.FragmentCategoryBinding
+import com.example.onlineshop.databinding.FragmentHomeBinding
+import com.example.onlineshop.ui.home.HomeFragmentViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CategoryFragment : Fragment() {
 
-
+    lateinit var binding: FragmentCategoryBinding
+    val viewModel: CategoryViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,9 +28,17 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false)
+        binding = FragmentCategoryBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapterCategory = CategoryRecyclerViewAdapter({})
+        binding.rvCategoryFragment.adapter = adapterCategory
+        viewModel.listOfCategory.observe(viewLifecycleOwner) { adapterCategory.submitList(it) }
+
+    }
 }
