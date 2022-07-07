@@ -6,7 +6,7 @@ import com.example.onlineshop.model.ProductItem
 import javax.inject.Inject
 
 
-class ProductRepository @Inject constructor(val productRemoteDataSource :ProductRemoteDataSource) {
+class ProductRepository @Inject constructor(private val productRemoteDataSource :ProductRemoteDataSource) {
 
     suspend fun getListOfProducts( orderly:String ):List<ProductItem>{
         return productRemoteDataSource.getListOfProducts(orderly)
@@ -14,5 +14,9 @@ class ProductRepository @Inject constructor(val productRemoteDataSource :Product
 
     suspend fun  getCategory():List<CategoryItemItem>{
         return productRemoteDataSource.getCategory()
+    }
+
+    suspend fun  getOneProduct(id:Int):ProductItem{
+        return productRemoteDataSource.getOneProduct(id)
     }
 }

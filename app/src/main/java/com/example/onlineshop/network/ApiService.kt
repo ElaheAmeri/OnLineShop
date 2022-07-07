@@ -1,9 +1,10 @@
 package com.example.onlineshop.network
 
-import com.example.onlineshop.model.Category
+
 import com.example.onlineshop.model.CategoryItemItem
 import com.example.onlineshop.model.ProductItem
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -24,6 +25,14 @@ interface ApiService {
         @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
         @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
     ):List<CategoryItemItem>
+
+    @GET("products/{id}")
+    suspend fun getProduct(
+        @Path("id") id: Int,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
+    ):ProductItem
+
 
 
 }

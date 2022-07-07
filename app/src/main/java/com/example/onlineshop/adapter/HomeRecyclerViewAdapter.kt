@@ -12,24 +12,30 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlineshop.R
+import com.example.onlineshop.databinding.FragmentHomeBinding
 import com.example.onlineshop.model.Category
 import com.example.onlineshop.model.ProductItem
-
-class HomeRecyclerViewAdapter(var onClickItem: (Int) -> Unit) :
+typealias onClickItem= (ProductItem) ->Unit
+class HomeRecyclerViewAdapter(var click: onClickItem) :
     ListAdapter<ProductItem, HomeRecyclerViewAdapter.ViewHolder>(ProductDiffCallback) {
-    class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
-        val ivProduct = view.findViewById<ImageView>(R.id.ivProduct)
-        val tvTitle = view.findViewById<TextView>(R.id.tvName)
-        val tvPrice = view.findViewById<TextView>(R.id.tvPrice)
+    class ViewHolder(var view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
+        private val ivProduct: ImageView? = view.findViewById(R.id.ivProduct)
+        private val tvTitle: TextView? = view.findViewById(R.id.tvName)
+        private val tvPrice: TextView? = view.findViewById<TextView>(R.id.tvPrice)
         @SuppressLint("SetTextI18n")
-        fun bind(productItem: ProductItem, onClickItem: (Int) -> Unit) {
-            tvTitle.text = productItem.name
-            tvPrice.text=productItem.price+ "تومان"
-            Glide.with(context)
-                .load(productItem.images[0].src)
-                .fitCenter()
-                .override(600,650)
-                .into(ivProduct)
+        fun bind(productItem: ProductItem, click: onClickItem) {
+            view.setOnClickListener(){
+                click.invoke(productItem)
+            }
+            tvTitle?.text = productItem.name
+            tvPrice?.text=productItem.price+ "تومان"
+            if (ivProduct != null) {
+                Glide.with(context)
+                    .load(productItem.images[0].src)
+                    .fitCenter()
+                    .override(600,650)
+                    .into(ivProduct)
+            }
         }
     }
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -38,7 +44,7 @@ class HomeRecyclerViewAdapter(var onClickItem: (Int) -> Unit) :
         return ViewHolder(view,viewGroup.context)
     }
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(getItem(position), onClickItem)
+        viewHolder.bind(getItem(position), click)
     }
 
 

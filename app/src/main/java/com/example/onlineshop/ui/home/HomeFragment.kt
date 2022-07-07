@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.onlineshop.R
 import com.example.onlineshop.adapter.HomeRecyclerViewAdapter
 import com.example.onlineshop.databinding.FragmentHomeBinding
+import com.example.onlineshop.model.ProductItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,23 +36,27 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val adapterRvListOflatestProducts = HomeRecyclerViewAdapter({})
+        val adapterRvListOflatestProducts = HomeRecyclerViewAdapter {  id -> goToDetailPage(id) }
         binding.rvListOflatestProducts.adapter = adapterRvListOflatestProducts
-        viewModel.listOflatestProducts.observe(viewLifecycleOwner) {
+        viewModel.listOfLatestProducts.observe(viewLifecycleOwner) {
             adapterRvListOflatestProducts.submitList(it)
         }
 
-        val adapterRvListOfMostVisitProduct=HomeRecyclerViewAdapter({})
+        val adapterRvListOfMostVisitProduct=HomeRecyclerViewAdapter {  id -> goToDetailPage(id)}
         binding.rvListOfMostVisitedProducts.adapter = adapterRvListOfMostVisitProduct
         viewModel.listOfMostVisitedProducts.observe(viewLifecycleOwner){
             adapterRvListOfMostVisitProduct.submitList(it)
         }
 
-        val adapterRvListOfBestProduct=HomeRecyclerViewAdapter({})
+        val adapterRvListOfBestProduct=HomeRecyclerViewAdapter { id -> goToDetailPage(id) }
         binding.rvListOfBestProducts.adapter =adapterRvListOfBestProduct
         viewModel.listOfBestProducts.observe(viewLifecycleOwner){
             adapterRvListOfBestProduct.submitList(it)
         }
+    }
+    private fun goToDetailPage(productItem: ProductItem) {
 
+        val bundle = bundleOf("ProductId" to productItem.id.toInt())
+        findNavController().navigate(R.id.action_homeFragment_to_detailProductFragment, bundle)
     }
 }
