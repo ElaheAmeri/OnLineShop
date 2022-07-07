@@ -33,6 +33,14 @@ interface ApiService {
         @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
     ):ProductItem
 
+    @GET("products")
+    suspend fun getProductsOfCategory(
+        @Query("category") categoryId: String,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
+        @Query("per_page") perPage: Int = 20,
+        @Query("exclude") except: Int = 608
+    ):List<ProductItem>
 
 
 }

@@ -19,4 +19,8 @@ class ProductRepository @Inject constructor(private val productRemoteDataSource 
     suspend fun  getOneProduct(id:Int):ProductItem{
         return productRemoteDataSource.getOneProduct(id)
     }
+
+    suspend fun getProductsOfCategory(category:String):List<ProductItem>{
+        return productRemoteDataSource.getProductsOfCategory(category)
+    }
 }

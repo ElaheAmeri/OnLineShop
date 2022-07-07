@@ -9,7 +9,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.onlineshop.R
-import com.example.onlineshop.adapter.HomeRecyclerViewAdapter
 import com.example.onlineshop.databinding.FragmentHomeBinding
 import com.example.onlineshop.model.ProductItem
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,10 +35,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val adapterRvListOflatestProducts = HomeRecyclerViewAdapter {  id -> goToDetailPage(id) }
-        binding.rvListOflatestProducts.adapter = adapterRvListOflatestProducts
+        val adapterRvListOfLatestProducts = HomeRecyclerViewAdapter { id -> goToDetailPage(id) }
+        binding.rvListOflatestProducts.adapter = adapterRvListOfLatestProducts
         viewModel.listOfLatestProducts.observe(viewLifecycleOwner) {
-            adapterRvListOflatestProducts.submitList(it)
+            adapterRvListOfLatestProducts.submitList(it)
         }
 
         val adapterRvListOfMostVisitProduct=HomeRecyclerViewAdapter {  id -> goToDetailPage(id)}

@@ -18,7 +18,11 @@
         android:id="@+id/categoryFragment2"
         android:name="com.example.onlineshop.ui.category.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment2_to_resultOfCategoryFragment"
+            app:destination="@id/resultOfCategoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shoppingFragment2"
         android:name="com.example.onlineshop.ui.shopping.ShoppingFragment"
@@ -29,4 +33,9 @@
         android:name="com.example.onlineshop.ui.detail.DetailProductFragment"
         android:label="fragment_detail_product"
         tools:layout="@layout/fragment_detail_product" />
+    <fragment
+        android:id="@+id/resultOfCategoryFragment"
+        android:name="com.example.onlineshop.ui.resultofcategory.ResultOfCategoryFragment"
+        android:label="fragment_result_of_category"
+        tools:layout="@layout/fragment_result_of_category" />
 </navigation>

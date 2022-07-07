@@ -1,4 +1,4 @@
-package com.example.onlineshop.ui.category
+package com.example.onlineshop.ui.resultofcategory
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,44 +13,44 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlineshop.R
 import com.example.onlineshop.model.CategoryItemItem
+import com.example.onlineshop.model.ProductItem
 
-
-typealias onClickItem= (CategoryItemItem) ->Unit
-class CategoryRecyclerViewAdapter(var click: onClickItem) :
-    ListAdapter<CategoryItemItem, CategoryRecyclerViewAdapter.ViewHolder>(CategoryDiffCallback) {
+typealias onClickItem= (ProductItem) ->Unit
+class ResultOfCategoryAdapter(var click: onClickItem) :
+    ListAdapter<ProductItem, ResultOfCategoryAdapter.ViewHolder>(ProductItemDiffCallback) {
     class ViewHolder(var view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
-        private val ivCategory: ImageView? = view.findViewById(R.id.ivCategory)
-        private val tvCategoryName: TextView? =view.findViewById(R.id.tvCategoryName)
+        private val ivResultCategory: ImageView? = view.findViewById(R.id.ivResultCategory)
+        private val tvResultCategory: TextView? =view.findViewById(R.id.tvResultCategory)
 
         @SuppressLint("SetTextI18n")
-        fun bind(category: CategoryItemItem,click: onClickItem) {
+        fun bind(productItem: ProductItem, click: onClickItem) {
             view.setOnClickListener(){
-                click.invoke(category)
+                click.invoke(productItem)
             }
-            tvCategoryName?.text= category.name
-            if (ivCategory != null) {
+            tvResultCategory?.text= productItem.name
+            if (ivResultCategory != null) {
                 Glide.with(context)
-                    .load(category.image.src)
+                    .load(productItem.images[0].src)
                     .fitCenter()
                     .override(400,450)
-                    .into(ivCategory)
+                    .into(ivResultCategory)
             }
         }
     }
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.category_item_row, viewGroup, false)
+            .inflate(R.layout.result_of_category_item_row, viewGroup, false)
         return ViewHolder(view,viewGroup.context)
     }
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(getItem(position), click)
     }
-    object CategoryDiffCallback : DiffUtil.ItemCallback<CategoryItemItem>(){
-        override fun areItemsTheSame(oldItem:CategoryItemItem , newItem: CategoryItemItem): Boolean {
+    object ProductItemDiffCallback : DiffUtil.ItemCallback<ProductItem>(){
+        override fun areItemsTheSame(oldItem: ProductItem, newItem: ProductItem): Boolean {
             return oldItem==newItem
         }
 
-        override fun areContentsTheSame(oldItem: CategoryItemItem, newItem: CategoryItemItem): Boolean {
+        override fun areContentsTheSame(oldItem: ProductItem, newItem: ProductItem): Boolean {
             return oldItem==newItem
         }
     }
