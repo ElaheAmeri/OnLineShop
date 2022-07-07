@@ -6,12 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.onlineshop.R
-import com.example.onlineshop.adapter.CategoryRecyclerViewAdapter
 import com.example.onlineshop.databinding.FragmentCategoryBinding
-import com.example.onlineshop.databinding.FragmentHomeBinding
-import com.example.onlineshop.ui.home.HomeFragmentViewModel
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

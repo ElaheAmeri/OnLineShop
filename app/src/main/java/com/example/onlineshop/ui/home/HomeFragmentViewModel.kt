@@ -34,6 +34,7 @@ ViewModel() {
 
             listOfLatestProducts.postValue(productRepository.getListOfProducts("date"))
         }
+        status.value=ApiStatus.DONE
     }
 
     private fun getListOfMostVisitedProducts() {

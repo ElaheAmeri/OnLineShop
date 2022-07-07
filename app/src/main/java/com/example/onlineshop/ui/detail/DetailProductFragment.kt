@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.example.onlineshop.RemoveHtmlTag
 import com.example.onlineshop.adapter.PagerDetailAdapter
 import com.example.onlineshop.databinding.FragmentDetailProductBinding
 import com.example.onlineshop.model.Image
@@ -40,8 +41,6 @@ class DetailProductFragment : Fragment() {
         binding.pagerDetailFragment.adapter =adapter
 
     }
-
-    @SuppressLint("SetTextI18n")
     private fun observeProduceItem() {
         viewModel.detailProductLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -49,7 +48,8 @@ class DetailProductFragment : Fragment() {
                 binding.tvDetailName.text = it.name
                 binding.tvRating.text = it.averageRating
                 binding.tvDetailPrice.text = it.price
-                binding.tvDescription.text =it.description
+                val description =RemoveHtmlTag.html2text(it.description)
+                binding.tvDescription.text =description
             }
         }
     }
