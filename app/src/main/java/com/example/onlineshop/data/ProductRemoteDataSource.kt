@@ -8,7 +8,7 @@ import com.example.onlineshop.model.ProductItem
 import com.example.onlineshop.network.ApiService
 import javax.inject.Inject
 
-class ProductRemoteDataSource @Inject constructor(val ApiService: ApiService) {
+class ProductRemoteDataSource @Inject constructor(private val ApiService: ApiService) {
     suspend fun getListOfProducts( orderly:String ):List<ProductItem>{
 
             return ApiService.getListOfProducts(orderly)
@@ -26,4 +26,7 @@ class ProductRemoteDataSource @Inject constructor(val ApiService: ApiService) {
         return ApiService.getProductsOfCategory(category)
     }
 
+    suspend fun search(wordSearched:String):List<ProductItem>{
+       return ApiService.search(wordSearched)
+    }
 }

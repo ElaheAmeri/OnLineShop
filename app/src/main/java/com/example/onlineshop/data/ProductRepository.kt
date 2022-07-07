@@ -23,4 +23,8 @@ class ProductRepository @Inject constructor(private val productRemoteDataSource 
     suspend fun getProductsOfCategory(category:String):List<ProductItem>{
         return productRemoteDataSource.getProductsOfCategory(category)
     }
+
+    suspend fun search(wordSearched:String):List<ProductItem>{
+        return productRemoteDataSource.search(wordSearched)
+    }
 }

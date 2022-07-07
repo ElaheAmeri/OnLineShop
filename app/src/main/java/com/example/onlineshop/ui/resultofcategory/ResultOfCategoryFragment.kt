@@ -40,14 +40,18 @@ class ResultOfCategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val itemId = requireArguments().getString("CategoryId", "")
         viewModel.getListProductOfCategory(itemId)
-        val adapterRvResultOfCategory=ResultOfCategoryAdapter {}
+        val adapterRvResultOfCategory=ResultOfCategoryAdapter { id -> goToDetailPage(id)}
         binding.rvResultOfCategory.adapter=adapterRvResultOfCategory
         viewModel.listOfCategory.observe(viewLifecycleOwner){
             adapterRvResultOfCategory.submitList(it)
         }
     }
 
+    private fun   goToDetailPage(productItem: ProductItem) {
 
+        val bundle = bundleOf("ProductId" to productItem.id.toInt())
+        findNavController().navigate(R.id.action_resultOfCategoryFragment_to_detailProductFragment, bundle)
+    }
 
 
 

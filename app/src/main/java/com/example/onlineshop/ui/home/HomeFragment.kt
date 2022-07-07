@@ -52,10 +52,19 @@ class HomeFragment : Fragment() {
         viewModel.listOfBestProducts.observe(viewLifecycleOwner){
             adapterRvListOfBestProduct.submitList(it)
         }
+
+        binding.tvSearch.setOnClickListener(){
+            goToSearchFragment()
+        }
     }
     private fun goToDetailPage(productItem: ProductItem) {
 
         val bundle = bundleOf("ProductId" to productItem.id.toInt())
         findNavController().navigate(R.id.action_homeFragment_to_detailProductFragment, bundle)
+    }
+
+    fun goToSearchFragment(){
+        val  bundle = bundleOf("wordSearched" to binding.tvSearch.text)
+        findNavController().navigate(R.id.action_homeFragment_to_searchFragment,bundle)
     }
 }

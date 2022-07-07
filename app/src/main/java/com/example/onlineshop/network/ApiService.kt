@@ -43,4 +43,15 @@ interface ApiService {
     ):List<ProductItem>
 
 
+
+    @GET("products")
+    suspend fun search(
+        @Query("search") searchWord: String,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
+        @Query("per_page") perPage: Int = 20,
+
+    ):List<ProductItem>
+
+
 }
