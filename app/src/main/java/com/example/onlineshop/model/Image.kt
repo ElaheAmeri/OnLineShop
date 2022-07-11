@@ -21,5 +21,5 @@ data class Image(
     @Json(name = "name")
     val name: String,
     @Json(name = "src")
-    val src: String
+    var src: String
 )

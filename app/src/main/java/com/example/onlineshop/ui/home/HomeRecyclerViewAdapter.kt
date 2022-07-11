@@ -30,11 +30,15 @@ class HomeRecyclerViewAdapter(var click: onClickItem) :
             tvTitle?.text = productItem.name
             tvPrice?.text=productItem.price+ "تومان"
             if (ivProduct != null) {
-                Glide.with(context)
-                    .load(productItem.images[0].src)
-                    .fitCenter()
-                    .override(600,650)
-                    .into(ivProduct)
+                if(productItem.images.isNotEmpty()) {
+                    Glide.with(context)
+                        .load(productItem.images[0].src)
+                        .fitCenter()
+                        .override(600, 650)
+                        .into(ivProduct)
+                }else{
+                   ""
+                }
             }
         }
     }

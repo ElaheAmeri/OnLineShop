@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.onlineshop.R
@@ -26,19 +27,31 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding=FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+//        viewModel.status.observe(viewLifecycleOwner){
+//            when(it){
+//                ApiStatus.DONE->{
+//                }
+//                else->{binding.llHome.visibility=View.VISIBLE
+//                    binding.animationViewHome.visibility=View.GONE }
+//            }
+//
+//        }
         val adapterRvListOfLatestProducts = HomeRecyclerViewAdapter { id -> goToDetailPage(id) }
         binding.rvListOflatestProducts.adapter = adapterRvListOfLatestProducts
         viewModel.listOfLatestProducts.observe(viewLifecycleOwner) {
             adapterRvListOfLatestProducts.submitList(it)
+            binding.llHome.visibility=View.VISIBLE
+            binding.animationViewHome.visibility=View.GONE
         }
 
         val adapterRvListOfMostVisitProduct=HomeRecyclerViewAdapter {  id -> goToDetailPage(id)}
@@ -63,7 +76,7 @@ class HomeFragment : Fragment() {
         findNavController().navigate(R.id.action_homeFragment_to_detailProductFragment, bundle)
     }
 
-    fun goToSearchFragment(){
+    private fun goToSearchFragment(){
         val  bundle = bundleOf("wordSearched" to binding.tvSearch.text)
         findNavController().navigate(R.id.action_homeFragment_to_searchFragment,bundle)
     }
