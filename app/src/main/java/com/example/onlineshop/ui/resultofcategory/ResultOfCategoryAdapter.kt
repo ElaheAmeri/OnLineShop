@@ -29,11 +29,15 @@ class ResultOfCategoryAdapter(var click: onClickItem) :
             }
             tvResultCategory?.text= productItem.name
             if (ivResultCategory != null) {
-                Glide.with(context)
-                    .load(productItem.images[0].src)
-                    .fitCenter()
-                    .override(400,450)
-                    .into(ivResultCategory)
+                if(productItem.images.isNotEmpty()) {
+                    Glide.with(context)
+                        .load(productItem.images[0].src)
+                        .fitCenter()
+                        .override(400, 450)
+                        .into(ivResultCategory)
+                }else{
+                    ""
+                }
             }
         }
     }

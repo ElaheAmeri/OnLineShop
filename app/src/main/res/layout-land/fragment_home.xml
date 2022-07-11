@@ -85,8 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@drawable/rv_image_backgrand"
-        android:padding="6dp"
+            android:background="@color/rv_background"
+            android:padding="6dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         <TextView
@@ -110,7 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@drawable/rv_image_backgrand"
+        android:background="@color/rv_background1"
         android:padding="6dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -131,7 +131,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListOfBestProducts"
         android:layout_width="match_parent"
-        android:background="@drawable/rv_image_backgrand"
+        android:background="@color/rv_background2"
         android:padding="6dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
