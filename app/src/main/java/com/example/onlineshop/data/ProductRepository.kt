@@ -2,6 +2,7 @@ package com.example.onlineshop.data
 
 import com.example.onlineshop.model.Category
 import com.example.onlineshop.model.CategoryItemItem
+import com.example.onlineshop.model.Customer
 import com.example.onlineshop.model.ProductItem
 import javax.inject.Inject
 
@@ -26,5 +27,9 @@ class ProductRepository @Inject constructor(private val productRemoteDataSource 
 
     suspend fun search(wordSearched:String):List<ProductItem>{
         return productRemoteDataSource.search(wordSearched)
+    }
+
+    suspend fun registerCustomer(name:String,lastName:String,email:String):Customer?{
+        return productRemoteDataSource.registerCustomer(name,lastName,email)
     }
 }

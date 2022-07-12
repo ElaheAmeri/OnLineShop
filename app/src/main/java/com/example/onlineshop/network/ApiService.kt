@@ -2,10 +2,9 @@ package com.example.onlineshop.network
 
 
 import com.example.onlineshop.model.CategoryItemItem
+import com.example.onlineshop.model.Customer
 import com.example.onlineshop.model.ProductItem
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 const val BASE_URL = "https://woocommerce.maktabsharif.ir/wp-json/wc/v3/"
@@ -53,5 +52,15 @@ interface ApiService {
 
     ):List<ProductItem>
 
+
+    @POST("customers")
+    suspend fun registerCustomer(
+
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName :String,
+        @Field("email") email: String,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
+    ): Customer?
 
 }

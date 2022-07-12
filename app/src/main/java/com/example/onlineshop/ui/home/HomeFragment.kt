@@ -37,15 +37,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewModel.status.observe(viewLifecycleOwner){
-//            when(it){
-//                ApiStatus.DONE->{
-//                }
-//                else->{binding.llHome.visibility=View.VISIBLE
-//                    binding.animationViewHome.visibility=View.GONE }
-//            }
-//
-//        }
+
         val adapterRvListOfLatestProducts = HomeRecyclerViewAdapter { id -> goToDetailPage(id) }
         binding.rvListOflatestProducts.adapter = adapterRvListOfLatestProducts
         viewModel.listOfLatestProducts.observe(viewLifecycleOwner) {

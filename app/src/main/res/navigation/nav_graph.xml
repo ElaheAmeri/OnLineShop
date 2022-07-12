@@ -50,4 +50,9 @@
         android:name="com.example.onlineshop.ui.sreach.SearchFragment"
         android:label="fragment_sreach"
         tools:layout="@layout/fragment_sreach" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.example.onlineshop.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

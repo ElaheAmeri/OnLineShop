@@ -5,4 +5,5 @@
     <string name="category">دسته بندی</string>
     <string name="shopping">سبد خرید</string>
     <string name="home">خانه</string>
+    <string name="login">حساب کاربری</string>
 </resources>
