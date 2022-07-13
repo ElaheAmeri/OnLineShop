@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailProductFragment : Fragment() {
     lateinit var binding: FragmentDetailProductBinding
     val viewModel: DetailProductViewModel by viewModels()
-    private var urlList = listOf<Image>()
+    var urlList = listOf<Image>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +39,7 @@ class DetailProductFragment : Fragment() {
         observeProduceItem()
         val adapter =PagerDetailAdapter( requireContext(),urlList)
         binding.pagerDetailFragment.adapter =adapter
+
 
     }
     private fun observeProduceItem() {

@@ -3,7 +3,9 @@ package com.example.onlineshop.network
 
 import com.example.onlineshop.model.CategoryItemItem
 import com.example.onlineshop.model.Customer
+import com.example.onlineshop.model.Order
 import com.example.onlineshop.model.ProductItem
+import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -52,7 +54,7 @@ interface ApiService {
 
     ):List<ProductItem>
 
-
+    @FormUrlEncoded
     @POST("customers")
     suspend fun registerCustomer(
 
@@ -61,6 +63,14 @@ interface ApiService {
         @Field("email") email: String,
         @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
         @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
-    ): Customer?
+    ): Response<Customer>
+
+
+    @POST("orders")
+    suspend fun order(
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
+        @Body shoppingItems: Order
+    ):Order
 
 }

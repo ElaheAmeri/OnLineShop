@@ -29,3 +29,4 @@ data class Billing(
     @Json(name = "state")
     val state: String
 )
+

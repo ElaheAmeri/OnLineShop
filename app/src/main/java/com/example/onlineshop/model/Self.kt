@@ -9,3 +9,4 @@ data class Self(
     @Json(name = "href")
     val href: String
 )
+

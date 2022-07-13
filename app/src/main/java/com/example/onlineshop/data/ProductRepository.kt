@@ -4,6 +4,7 @@ import com.example.onlineshop.model.Category
 import com.example.onlineshop.model.CategoryItemItem
 import com.example.onlineshop.model.Customer
 import com.example.onlineshop.model.ProductItem
+import retrofit2.Response
 import javax.inject.Inject
 
 
@@ -29,7 +30,7 @@ class ProductRepository @Inject constructor(private val productRemoteDataSource 
         return productRemoteDataSource.search(wordSearched)
     }
 
-    suspend fun registerCustomer(name:String,lastName:String,email:String):Customer?{
+    suspend fun registerCustomer(name:String,lastName:String,email:String): Response<Customer> {
         return productRemoteDataSource.registerCustomer(name,lastName,email)
     }
 }

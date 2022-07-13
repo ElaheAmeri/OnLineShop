@@ -9,3 +9,4 @@ data class Collection(
     @Json(name = "href")
     val href: String
 )
+

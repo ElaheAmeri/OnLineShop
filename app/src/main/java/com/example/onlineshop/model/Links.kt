@@ -11,3 +11,4 @@ data class Links(
     @Json(name = "self")
     val self: List<Self>
 )
+

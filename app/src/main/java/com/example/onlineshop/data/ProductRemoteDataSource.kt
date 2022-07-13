@@ -7,6 +7,7 @@ import com.example.onlineshop.model.CategoryItemItem
 import com.example.onlineshop.model.Customer
 import com.example.onlineshop.model.ProductItem
 import com.example.onlineshop.network.ApiService
+import retrofit2.Response
 import javax.inject.Inject
 
 class ProductRemoteDataSource @Inject constructor(private val ApiService: ApiService) {
@@ -31,7 +32,7 @@ class ProductRemoteDataSource @Inject constructor(private val ApiService: ApiSer
        return ApiService.search(wordSearched)
     }
 
-    suspend fun registerCustomer(name:String,lastName:String,email:String):Customer?{
+    suspend fun registerCustomer(name:String,lastName:String,email:String): Response<Customer> {
         return ApiService.registerCustomer(name,lastName,email)
     }
 }

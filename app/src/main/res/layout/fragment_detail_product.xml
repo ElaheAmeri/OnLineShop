@@ -17,9 +17,8 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pagerDetailFragment"
             android:layout_width="match_parent"
-            android:layout_height="350sp"
+            android:layout_height="300sp"
             android:layout_marginTop="4dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +74,15 @@
                 android:padding="6sp"
                 android:background="@drawable/rv_image_backgrand"
                 tools:text="توضیحات محصولات"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/tvReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="6sp"
+                android:background="@drawable/rv_image_backgrand"
+                tools:text="نظرات"
                 android:textSize="20dp" />
         </LinearLayout>
 

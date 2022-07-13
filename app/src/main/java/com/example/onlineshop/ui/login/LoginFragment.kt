@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : Fragment() {
     lateinit var binding: FragmentLoginBinding
     val viewModel:LoginFragmentViewModel by viewModels()
-
+    var customerId:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +23,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         binding=FragmentLoginBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -31,13 +31,39 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.listOfCustomer.observe(viewLifecycleOwner){
-            viewModel.registerCustomer(binding.etName.text.toString()
-                ,binding.etLastName.text.toString(),binding.etEmail.text.toString())
-        }
 
-        binding.btnRegister.setOnClickListener(){
-            Toast.makeText(requireContext(),"اطلاعات شما با موفقیت ثبت شد",Toast.LENGTH_SHORT).show()
-        }
+            binding.btnRegister.setOnClickListener(){
+                if (viewModel.customerIsLogin(requireContext())) {
+                    viewModel.completeField(binding.etName)
+                    viewModel.completeField(binding.etLastName)
+                    viewModel.completeField(binding.etEmail)
+                    viewModel.registerCustomer(
+                        binding.etName.text.toString(),
+                        binding.etLastName.text.toString(), binding.etEmail.text.toString()
+                    )
+                    viewModel.customerLiveData.observe(viewLifecycleOwner){
+                        viewModel.saveCustomerToSharP(requireContext(),it)
+                    }
+
+                }else{
+                    binding.etName.setText(viewModel.name)
+                    binding.etLastName.setText(viewModel.lastName)
+                    binding.etEmail.setText(viewModel.email)
+                }
+                    viewModel.statusLivedata.observe(viewLifecycleOwner){
+                        when(it){
+                            201->{Toast.makeText(requireContext(),
+                                "اطلاعات شما با موفقیت ثبت شد",Toast.LENGTH_SHORT).show()}
+
+                            else-> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "خطایی پیش آمده لطفا بعدا دوبراه سعی کنید", Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    }
+                }
+
     }
 }

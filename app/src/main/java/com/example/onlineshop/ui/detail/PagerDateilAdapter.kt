@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
 import com.example.onlineshop.databinding.DetailItemRowBinding
+import com.example.onlineshop.databinding.FragmentDetailProductBinding
 import com.example.onlineshop.model.Image
 
 class PagerDetailAdapter( val context: Context, var images: List<Image>)
@@ -16,6 +18,8 @@ class PagerDetailAdapter( val context: Context, var images: List<Image>)
         fun setImage(imageUrl:String){
                 Glide.with(context)
                     .load(imageUrl)
+                    .fitCenter()
+                    .override(600,650)
                     .into(binding.ivDetailProduct)
         }
     }
