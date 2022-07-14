@@ -58,10 +58,6 @@ class DetailProductFragment : Fragment() {
         val rvReviewAdapter=ReviewAdapter {}
         binding.rvDetail.adapter=rvReviewAdapter
         viewModel.detailProductLiveDataReviw.observe(viewLifecycleOwner){
-            var listRevie: String
-            for (i in it.indices){
-                 listRevie= RemoveHtmlTag.html2text(it[i].review)
-            }
             rvReviewAdapter.submitList(it)
         }
         observeProduceItem()

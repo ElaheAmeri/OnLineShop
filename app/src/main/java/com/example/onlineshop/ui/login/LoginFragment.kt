@@ -1,12 +1,16 @@
 package com.example.onlineshop.ui.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
+import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,8 +32,19 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val switch=binding.switchThem
+        switch.setOnCheckedChangeListener(){buttonView,isChecked->
+            if (isChecked){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+
+        }
 
 
             binding.btnRegister.setOnClickListener(){
