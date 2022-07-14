@@ -1,18 +1,13 @@
 package com.example.onlineshop.ui.login
 
-import android.annotation.SuppressLint
+
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.provider.Settings.Global.*
 import android.widget.EditText
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.onlineshop.data.ProductRepository
 import com.example.onlineshop.model.Customer
-import com.example.onlineshop.model.ProductItem
-import com.example.onlineshop.ui.category.ApiStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,8 +16,9 @@ import javax.inject.Inject
 enum class ApiStatus { LOADING, DONE, ERROR }
 
 @HiltViewModel
-class LoginFragmentViewModel @Inject constructor(private val productRepository: ProductRepository) :
-    ViewModel() {
+class LoginFragmentViewModel @Inject constructor(private val productRepository: ProductRepository
+,private val app: Application
+) : AndroidViewModel(app) {
     private val sharpRef="sharpRef"
     var name:String=""
     var lastName:String=""
@@ -31,6 +27,10 @@ class LoginFragmentViewModel @Inject constructor(private val productRepository: 
     private lateinit var sharedPreferences: SharedPreferences
    val statusLivedata=MutableLiveData<Int>()
     val customerLiveData = MutableLiveData<Customer>()
+    init {
+        customerIsLogin()
+    }
+
 
 
 
@@ -46,9 +46,9 @@ class LoginFragmentViewModel @Inject constructor(private val productRepository: 
         }
     }
 
-    fun saveCustomerToSharP(context: Context, customer: Customer){
+    fun saveCustomerToSharP( customer: Customer){
 
-       sharedPreferences =context.getSharedPreferences(sharpRef,Context.MODE_PRIVATE)
+       sharedPreferences =app.getSharedPreferences(sharpRef,Context.MODE_PRIVATE)
         val editor:SharedPreferences.Editor =sharedPreferences.edit()
         editor.apply {
             putString("customerName",customer.firstName)
@@ -58,14 +58,14 @@ class LoginFragmentViewModel @Inject constructor(private val productRepository: 
         }.apply()
     }
 
-    fun customerIsLogin(context: Context):Boolean{
+    fun customerIsLogin():Boolean{
         val sharedPreferences:
-                SharedPreferences = context.getSharedPreferences(sharpRef,Context.MODE_PRIVATE)
+                SharedPreferences = app.getSharedPreferences(sharpRef,Context.MODE_PRIVATE)
          name = sharedPreferences.getString("customerName","").toString()
          lastName = sharedPreferences.getString("customerLastName","").toString()
          email = sharedPreferences.getString("customerEmail","").toString()
          customerId=sharedPreferences.getInt("customerId",-1)
-        return (name.isBlank())
+        return (lastName.isEmpty())
 
     }
     fun completeField(editText: EditText):Boolean{

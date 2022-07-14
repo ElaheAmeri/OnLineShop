@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/llReview"
-    android:layout_margin="8sp"
+    android:background="@drawable/rv_image_backgrand"
+    android:layout_margin="12sp"
     android:padding="6sp"
     android:layout_height="300sp">
 
@@ -21,9 +22,11 @@
         android:id="@+id/tvNameReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/ivAvatar"
-        app:layout_constraintStart_toEndOf="@+id/ivAvatar" />
+        app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+        app:layout_constraintTop_toTopOf="@+id/ivAvatar" />
 
     <TextView
         android:id="@+id/tvReview"
@@ -37,10 +40,11 @@
 
     <RatingBar
         android:id="@+id/tvRatingReview"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="36dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

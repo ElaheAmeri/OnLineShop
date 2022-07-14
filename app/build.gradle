@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -108,4 +109,7 @@ dependencies {
 
     //gson
     implementation 'com.google.code.gson:gson:2.8.9'
+
+    //map
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 }

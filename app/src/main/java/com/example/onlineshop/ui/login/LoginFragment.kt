@@ -48,7 +48,6 @@ class LoginFragment : Fragment() {
 
 
             binding.btnRegister.setOnClickListener(){
-                if (!viewModel.customerIsLogin(requireContext())) {
                     viewModel.completeField(binding.etName)
                     viewModel.completeField(binding.etLastName)
                     viewModel.completeField(binding.etEmail)
@@ -56,29 +55,36 @@ class LoginFragment : Fragment() {
                         binding.etName.text.toString(),
                         binding.etLastName.text.toString(), binding.etEmail.text.toString()
                     )
-                    viewModel.customerLiveData.observe(viewLifecycleOwner){
-                        viewModel.saveCustomerToSharP(requireContext(),it)
-                    }
+                    viewModel.customerLiveData.observe(viewLifecycleOwner) {
+                        viewModel.saveCustomerToSharP( it)
 
-                }else{
-                    binding.etName.setText(viewModel.name)
-                    binding.etLastName.setText(viewModel.lastName)
-                    binding.etEmail.setText(viewModel.email)
-                }
-                    viewModel.statusLivedata.observe(viewLifecycleOwner){
-                        when(it){
-                            201->{Toast.makeText(requireContext(),
-                                "اطلاعات شما با موفقیت ثبت شد",Toast.LENGTH_SHORT).show()}
 
-                            else-> {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "خطایی پیش آمده لطفا بعدا دوبراه سعی کنید", Toast.LENGTH_SHORT
-                                ).show()
+                        viewModel.statusLivedata.observe(viewLifecycleOwner) {
+                            when (it) {
+                                201 -> {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "اطلاعات شما با موفقیت ثبت شد", Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                                else -> {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "خطایی پیش آمده لطفا بعدا دوبراه سعی کنید",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
                         }
                     }
-                }
-
+            }
+        if (!viewModel.customerIsLogin()) {
+            binding.etName.setText(viewModel.name)
+            binding.etLastName.setText(viewModel.lastName)
+            binding.etEmail.setText(viewModel.email)
+        }
     }
+
+
 }
