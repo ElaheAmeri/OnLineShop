@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : Fragment() {
     lateinit var binding: FragmentLoginBinding
     val viewModel:LoginFragmentViewModel by viewModels()
-    var customerId:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

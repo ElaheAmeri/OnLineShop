@@ -36,4 +36,16 @@ class ProductRemoteDataSource @Inject constructor(private val ApiService: ApiSer
     suspend fun getProductReviews(id:Int):List<Reviw>{
         return ApiService.getProductReviews(id)
     }
+
+    suspend fun deleteReview(id:Int){
+        return ApiService.deleteReview(id)
+    }
+
+    suspend fun editReview(id:Int,text:String,rating:Int,name:String):Reviw{
+        return ApiService.editReview(id,text,rating,name)
+    }
+
+    suspend fun getOneReview(id:Int):Reviw{
+        return ApiService.getReviewById(id)
+    }
 }

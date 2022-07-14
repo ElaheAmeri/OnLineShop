@@ -88,4 +88,28 @@ interface ApiService {
         @Body review: Reviw
     ): Reviw
 
+    @PUT("products/reviews/{id}")
+    suspend fun editReview(
+        @Path("id") id: Int,
+        @Query("review") reviewDescruption : String,
+        @Query("rating") rating : Int,
+        @Query("reviewer") reviwer : String,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
+        ): Reviw
+
+    @DELETE("products/reviews/{id}")
+    suspend fun deleteReview(
+        @Path("id") id: Int,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
+    )
+
+    @GET("products/reviews/{id}")
+    suspend fun getReviewById(
+        @Path("id") id: Int,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
+    ): Reviw
+
 }

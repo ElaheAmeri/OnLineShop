@@ -44,6 +44,8 @@ class DetailProductViewModel @Inject constructor(private val productRepository: 
 
 
 
+
+
     fun addProductSelectedToSharedPref(listProductItemId: Int,context: Context){
         sharedPreferencesShopping=context.getSharedPreferences(sharpRefShopping, Context.MODE_PRIVATE)
         val editorShopping=sharedPreferencesShopping.edit()

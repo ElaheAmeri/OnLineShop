@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_detailProductFragment_to_shoppingFragment2"
             app:destination="@id/shoppingFragment2" />
+        <action
+            android:id="@+id/action_detailProductFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultOfCategoryFragment"
@@ -59,4 +62,8 @@
         android:name="com.example.onlineshop.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.onlineshop.ui.review.ReviewFragment"
+        android:label="ReviewFragment" />
 </navigation>

@@ -55,14 +55,12 @@ class DetailProductFragment : Fragment() {
 
 
         viewModel.getProductReviews(itemId)
-        val rvReviewAdapter=ReviewAdapter {}
+        val rvReviewAdapter=ReviewAdapter {id->goToReviewFragment(id)}
         binding.rvDetail.adapter=rvReviewAdapter
         viewModel.detailProductLiveDataReviw.observe(viewLifecycleOwner){
             rvReviewAdapter.submitList(it)
         }
         observeProduceItem()
-
-
 
         sharedPreferences =requireActivity().getSharedPreferences(sharpRefListProductId,Context.MODE_PRIVATE)
 
@@ -89,5 +87,9 @@ class DetailProductFragment : Fragment() {
 
             }
         }
+    }
+    private fun goToReviewFragment(reviw: Reviw){
+        val  bundle = bundleOf("reviewId" to reviw.id )
+        findNavController().navigate(R.id.action_detailProductFragment_to_reviewFragment,bundle)
     }
 }

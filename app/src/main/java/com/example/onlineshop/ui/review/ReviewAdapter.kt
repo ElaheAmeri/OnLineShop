@@ -5,11 +5,9 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +17,6 @@ import com.example.onlineshop.RemoveHtmlTag
 import com.example.onlineshop.model.Reviw
 
 typealias ReviewClickHandler = (Reviw) -> Unit
-
 class ReviewAdapter(var onReviewClicked: ReviewClickHandler) :
     ListAdapter<Reviw, ReviewAdapter.ViewHolder>(ReviewsDiffCallback) {
 
@@ -42,6 +39,7 @@ class ReviewAdapter(var onReviewClicked: ReviewClickHandler) :
             llReview.setOnClickListener{
                 onReviewClicked(review)
             }
+
         }
     }
 

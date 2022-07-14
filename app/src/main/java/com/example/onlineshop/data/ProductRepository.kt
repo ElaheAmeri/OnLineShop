@@ -34,4 +34,16 @@ class ProductRepository @Inject constructor(private val productRemoteDataSource 
     suspend fun getProductReviews(id:Int):List<Reviw>{
         return productRemoteDataSource.getProductReviews(id)
     }
+
+    suspend fun deleteReview(id:Int){
+        return productRemoteDataSource.deleteReview(id)
+    }
+
+    suspend fun editReview(id:Int,text:String,rating:Int,name:String):Reviw{
+        return productRemoteDataSource.editReview(id,text,rating,name)
+    }
+
+    suspend fun getOneReview(id:Int):Reviw{
+        return productRemoteDataSource.getOneReview(id)
+    }
 }
