@@ -29,7 +29,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val wordSearched=arguments?.getString("wordSearched","")
+        val wordSearched=arguments?.getString("wordSearched","a")
         if (wordSearched != null) {
             viewModel.search(wordSearched)
         }

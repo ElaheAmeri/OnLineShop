@@ -46,7 +46,6 @@ class LoginFragmentViewModel @Inject constructor(private val productRepository: 
         }
     }
 
-    @SuppressLint("CommitPrefEdits")
     fun saveCustomerToSharP(context: Context, customer: Customer){
 
        sharedPreferences =context.getSharedPreferences(sharpRef,Context.MODE_PRIVATE)
@@ -56,7 +55,7 @@ class LoginFragmentViewModel @Inject constructor(private val productRepository: 
             putString("customerLastName",customer.lastName)
             putString("customerEmail",customer.email)
             putInt("customerId",customer.id)
-        }
+        }.apply()
     }
 
     fun customerIsLogin(context: Context):Boolean{

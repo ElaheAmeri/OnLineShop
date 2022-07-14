@@ -1,10 +1,7 @@
 package com.example.onlineshop.network
 
 
-import com.example.onlineshop.model.CategoryItemItem
-import com.example.onlineshop.model.Customer
-import com.example.onlineshop.model.Order
-import com.example.onlineshop.model.ProductItem
+import com.example.onlineshop.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -17,6 +14,8 @@ interface ApiService {
     @GET("products")
     suspend fun getListOfProducts(
         @Query("orderby") orderly: String, //= "date"
+        @Query("per_page") perPage: Int = 20,
+        @Query("exclude") except: Int = 608,
         @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
         @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
     ):List<ProductItem>
@@ -72,5 +71,21 @@ interface ApiService {
         @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
         @Body shoppingItems: Order
     ):Order
+
+    @GET("products/reviews")
+    suspend fun getProductReviews(
+        @Query("product") product_id : Int,
+        @Query("per_page") page: Int = 55,
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET
+
+    ): List<Reviw>
+
+    @POST("products/reviews")
+    suspend fun createReview(
+        @Query("consumer_key") consumerKey:String = CONSUMER_KEY,
+        @Query("consumer_secret") consumerSecret:String = CONSUMER_SECRET,
+        @Body review: Reviw
+    ): Reviw
 
 }

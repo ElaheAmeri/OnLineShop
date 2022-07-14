@@ -1,9 +1,6 @@
 package com.example.onlineshop.data
 
-import com.example.onlineshop.model.Category
-import com.example.onlineshop.model.CategoryItemItem
-import com.example.onlineshop.model.Customer
-import com.example.onlineshop.model.ProductItem
+import com.example.onlineshop.model.*
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -26,11 +23,15 @@ class ProductRepository @Inject constructor(private val productRemoteDataSource 
         return productRemoteDataSource.getProductsOfCategory(category)
     }
 
-    suspend fun search(wordSearched:String):List<ProductItem>{
-        return productRemoteDataSource.search(wordSearched)
+    suspend fun search(search:String):List<ProductItem>{
+        return productRemoteDataSource.search(search)
     }
 
     suspend fun registerCustomer(name:String,lastName:String,email:String): Response<Customer> {
         return productRemoteDataSource.registerCustomer(name,lastName,email)
+    }
+
+    suspend fun getProductReviews(id:Int):List<Reviw>{
+        return productRemoteDataSource.getProductReviews(id)
     }
 }

@@ -9,20 +9,7 @@
     android:layoutDirection="rtl"
     tools:context=".ui.detail.DetailProductFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pagerDetailFragment"
-            android:layout_width="match_parent"
-            android:layout_height="300sp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,13 +20,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pagerDetailFragment">
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pagerDetailFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300sp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/circleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/et_search_backgrand"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+            </me.relex.circleindicator.CircleIndicator3>
+            <Button
+                android:id="@+id/btnAddToShopping"
+                android:layout_width="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_add_shopping_cart_24"
+                android:layout_margin="18sp"
+                android:padding="8sp"
+                android:layout_height="wrap_content"
+                android:text="افزودن به سبد خرید"
+                tools:ignore="HardcodedText" />
+
             <TextView
                 android:id="@+id/tvDetailName"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:padding="6sp"
-                android:background="@drawable/rv_image_backgrand"
                 tools:text="نام محصولات"
                 android:textSize="20dp"  />
 
@@ -52,7 +65,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="6sp"
-                android:background="@drawable/rv_image_backgrand"
                 tools:text="رتبه محصولات"
                 android:textSize="20dp" />
 
@@ -62,7 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_margin="8dp"
-                android:background="@drawable/rv_image_backgrand"
                 android:padding="6sp"
                 android:textSize="20dp"
                 tools:text="قیمت محصولات" />
@@ -72,7 +83,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="6sp"
-                android:background="@drawable/rv_image_backgrand"
                 tools:text="توضیحات محصولات"
                 android:textSize="20dp" />
             <TextView
@@ -81,12 +91,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="6sp"
-                android:background="@drawable/rv_image_backgrand"
                 tools:text="نظرات"
                 android:textSize="20dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDetail"
+                android:layout_width="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

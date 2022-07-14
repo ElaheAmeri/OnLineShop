@@ -2,10 +2,7 @@ package com.example.onlineshop.data
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import com.example.onlineshop.model.Category
-import com.example.onlineshop.model.CategoryItemItem
-import com.example.onlineshop.model.Customer
-import com.example.onlineshop.model.ProductItem
+import com.example.onlineshop.model.*
 import com.example.onlineshop.network.ApiService
 import retrofit2.Response
 import javax.inject.Inject
@@ -28,11 +25,15 @@ class ProductRemoteDataSource @Inject constructor(private val ApiService: ApiSer
         return ApiService.getProductsOfCategory(category)
     }
 
-    suspend fun search(wordSearched:String):List<ProductItem>{
-       return ApiService.search(wordSearched)
+    suspend fun search(search:String):List<ProductItem>{
+       return ApiService.search(search)
     }
 
     suspend fun registerCustomer(name:String,lastName:String,email:String): Response<Customer> {
         return ApiService.registerCustomer(name,lastName,email)
+    }
+
+    suspend fun getProductReviews(id:Int):List<Reviw>{
+        return ApiService.getProductReviews(id)
     }
 }

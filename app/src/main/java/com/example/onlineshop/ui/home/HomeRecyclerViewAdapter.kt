@@ -12,15 +12,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlineshop.R
-import com.example.onlineshop.databinding.FragmentHomeBinding
-import com.example.onlineshop.model.Category
 import com.example.onlineshop.model.ProductItem
 typealias onClickItem= (ProductItem) ->Unit
 class HomeRecyclerViewAdapter(var click: onClickItem) :
     ListAdapter<ProductItem, HomeRecyclerViewAdapter.ViewHolder>(ProductDiffCallback) {
     class ViewHolder(var view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
         private val ivProduct: ImageView? = view.findViewById(R.id.ivProduct)
-        private val tvTitle: TextView? = view.findViewById(R.id.tvName)
+        private val tvTitle: TextView? = view.findViewById(R.id.tvNameReview)
         private val tvPrice: TextView? = view.findViewById<TextView>(R.id.tvPrice)
         @SuppressLint("SetTextI18n")
         fun bind(productItem: ProductItem, click: onClickItem) {

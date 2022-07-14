@@ -19,7 +19,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvNameReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="text"
@@ -39,7 +39,7 @@
         android:layout_margin="8dp"
         tools:text="text"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/tvName"
-        app:layout_constraintStart_toStartOf="@+id/tvName"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        app:layout_constraintEnd_toEndOf="@+id/tvNameReview"
+        app:layout_constraintStart_toStartOf="@+id/tvNameReview"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameReview" />
 </androidx.constraintlayout.widget.ConstraintLayout>

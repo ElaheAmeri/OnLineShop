@@ -20,6 +20,7 @@ ViewModel() {
     val listOfLatestProducts = MutableLiveData<List<ProductItem>>()
     val listOfMostVisitedProducts = MutableLiveData<List<ProductItem>>()
     val listOfBestProducts = MutableLiveData<List<ProductItem>>()
+    val specialProducts = MutableLiveData<ProductItem>()
 
 
     init {

@@ -15,9 +15,9 @@ class SearchFragmentViewModel@Inject constructor(private val productRepository: 
 
      val listOfProductsSearched = MutableLiveData<List<ProductItem>>()
 
-    fun search(wordSearched:String){
+    fun search(search:String){
         viewModelScope.launch {
-            listOfProductsSearched.postValue(productRepository.search(wordSearched))
+            listOfProductsSearched.postValue(productRepository.search(search))
 
         }
     }

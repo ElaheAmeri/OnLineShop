@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
 
 
             binding.btnRegister.setOnClickListener(){
-                if (viewModel.customerIsLogin(requireContext())) {
+                if (!viewModel.customerIsLogin(requireContext())) {
                     viewModel.completeField(binding.etName)
                     viewModel.completeField(binding.etLastName)
                     viewModel.completeField(binding.etEmail)
