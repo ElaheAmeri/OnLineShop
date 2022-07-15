@@ -26,7 +26,7 @@ class ReviewAdapter(var onReviewClicked: ReviewClickHandler) :
         var tvReviewerName = view.findViewById<TextView>(R.id.tvNameReview)
         var tvReview = view.findViewById<TextView>(R.id.tvReview)
         var rating = view.findViewById<RatingBar>(R.id.tvRatingReview)
-        val llReview = view.findViewById<ConstraintLayout>(R.id.llReview)
+        val llReview = view.findViewById<LinearLayout>(R.id.llReview)
 
         fun bind(review: Reviw, onReviewClicked: ReviewClickHandler) {
             tvReviewerName.text = review.reviewer

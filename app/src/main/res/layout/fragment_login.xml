@@ -8,7 +8,7 @@
     tools:context=".ui.login.LoginFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/loginFragment2"
         android:orientation="vertical">
         <Switch
@@ -53,6 +53,40 @@
         android:background="@drawable/rv_image_backgrand"
         android:inputType="textEmailAddress"
         tools:ignore="HardcodedText" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnLocation"
+                android:layout_width="34dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="18sp"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                android:padding="8sp"
+                tools:ignore="HardcodedText" />
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_margin="18sp"
+            android:layout_height="wrap_content"
+            android:hint="آدرس"
+            android:layout_weight="1"
+            android:padding="8sp"
+            android:ems="10"
+            android:background="@drawable/rv_image_backgrand"
+            android:inputType="textEmailAddress"
+            tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_margin="18sp"
+            android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnRegister"
@@ -62,6 +96,7 @@
         android:layout_height="wrap_content"
         android:text="ثبت"
         tools:ignore="HardcodedText" />
+
 
 
 

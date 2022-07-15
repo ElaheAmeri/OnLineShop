@@ -47,11 +47,26 @@ class DetailProductFragment : Fragment() {
 
         val itemId = requireArguments().getInt("ProductId", -1)
         viewModel.getDetailProduct(itemId)
-
-        val adapterPagerDetail =PagerDetailAdapter( requireContext(),urlList)
+        val adapterPagerDetail =PagerDetailAdapter()
         binding.pagerDetailFragment.adapter =adapterPagerDetail
-        val indicator:CircleIndicator3=binding.circleIndicator
-        indicator.setViewPager(binding.pagerDetailFragment)
+
+        viewModel.detailProductLiveData.observe(viewLifecycleOwner) {
+            binding.llHome.visibility=View.VISIBLE
+            binding.animationViewHome.visibility=View.GONE
+
+            adapterPagerDetail.submitList(it.images)
+
+            if (it != null) {
+                urlList=it.images
+                binding.tvDetailName.text = it.name
+                binding.tvRating.text = it.averageRating
+                binding.tvDetailPrice.text = it.price
+                val description =RemoveHtmlTag.html2text(it.description)
+                binding.tvDescription.text =description
+
+            }
+        }
+
 
 
         viewModel.getProductReviews(itemId)
@@ -60,7 +75,6 @@ class DetailProductFragment : Fragment() {
         viewModel.detailProductLiveDataReviw.observe(viewLifecycleOwner){
             rvReviewAdapter.submitList(it)
         }
-        observeProduceItem()
 
         sharedPreferences =requireActivity().getSharedPreferences(sharpRefListProductId,Context.MODE_PRIVATE)
 
@@ -75,18 +89,7 @@ class DetailProductFragment : Fragment() {
     }
     private fun observeProduceItem() {
 
-        viewModel.detailProductLiveData.observe(viewLifecycleOwner) {
 
-            if (it != null) {
-                urlList=it.images
-                binding.tvDetailName.text = it.name
-                binding.tvRating.text = it.averageRating
-                binding.tvDetailPrice.text = it.price
-                val description =RemoveHtmlTag.html2text(it.description)
-                binding.tvDescription.text =description
-
-            }
-        }
     }
     private fun goToReviewFragment(reviw: Reviw){
         val  bundle = bundleOf("reviewId" to reviw.id )

@@ -1,5 +1,6 @@
 package com.example.onlineshop.ui.login
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,18 +10,43 @@ import android.view.ViewGroup
 import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentLoginBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(), OnMapReadyCallback {
+    private lateinit var mMap: GoogleMap
+    private val locationPermissionCode = 2
     lateinit var binding: FragmentLoginBinding
     val viewModel:LoginFragmentViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
+
+
+    }
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(
+            MarkerOptions()
+            .position(sydney)
+            .title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
     override fun onCreateView(
@@ -34,9 +60,22 @@ class LoginFragment : Fragment() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mapFragment = childFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+        binding.btnLocation.setOnClickListener(){
+            activity?.let { it1 ->
+                ActivityCompat.requestPermissions(
+                    it1,
+                    arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION)
+                    ,locationPermissionCode
+                )
+                binding.btnLocation.visibility=View.VISIBLE
+            }
+        }
 
         val switch=binding.switchThem
-        switch.setOnCheckedChangeListener(){buttonView,isChecked->
+        switch.setOnCheckedChangeListener(){ _, isChecked->
             if (isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }else{
