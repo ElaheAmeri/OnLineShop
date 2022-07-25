@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="6sp"
     android:layout_width="match_parent"
-
     android:background="@drawable/rv_image_backgrand"
     android:layout_height="wrap_content">
-
     <ImageView
         android:id="@+id/ivResultCategory"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="6sp"
+        android:layout_margin="6sp"
         tools:srcCompat="@tools:sample/avatars" />
+
+
 
     <TextView
         android:id="@+id/tvResultCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:ellipsize="end"
+        android:layout_margin="6sp"
+        android:padding="6sp"
         android:maxLines="2"
         android:minLines="2"
-        android:padding="6sp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivResultCategory"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="TextView" />
+
+
+</LinearLayout>

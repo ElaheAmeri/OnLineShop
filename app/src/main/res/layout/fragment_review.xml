@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rv_image_backgrand"
+    android:layout_margin="12sp"
+    android:padding="6sp"
+    android:orientation="vertical"
+    android:layout_height="250sp"
+    tools:context=".ui.review.ReviewFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="50sp"
+            android:layout_margin="8sp"
+            android:layout_height="50sp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvNameReview"
+            android:layout_width="wrap_content"
+            android:layout_margin="8sp"
+            android:layout_height="wrap_content" />
+        <RatingBar
+            android:id="@+id/tvRatingReview"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_margin="8sp"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/tvReview"
+        android:layout_width="wrap_content"
+        android:layout_margin="12sp"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="40sp"
+            android:padding="8sp"
+            android:layout_height="40sp"
+            android:drawableLeft="@drawable/ic_baseline_delete_outline_24" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:padding="8sp"
+            android:layout_marginStart="16dp"
+            android:drawableLeft="@drawable/ic_baseline_edit_24" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnSaveReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" ثبت نظر"
+        android:padding="8sp"
+        android:layout_marginStart="300dp"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -43,7 +42,7 @@
 
 
 
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/pagerDetailFragment"
                 android:layout_width="match_parent"
                 android:layout_height="304dp"
@@ -51,7 +50,16 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
-            </androidx.recyclerview.widget.RecyclerView>
+            </androidx.viewpager2.widget.ViewPager2>
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:padding="8sp"
+            android:gravity="fill_vertical"
+            android:layout_width="wrap_content"
+            android:background="@drawable/et_search_backgrand"
+            android:layout_height="wrap_content">
+        </me.relex.circleindicator.CircleIndicator3>
+
             <Button
                 android:id="@+id/btnAddToShopping"
                 android:layout_width="wrap_content"
@@ -70,8 +78,6 @@
                 android:padding="6sp"
                 tools:text="نام محصولات"
                 android:textSize="20dp"  />
-
-
 
 
             <TextView
@@ -108,6 +114,14 @@
                 android:padding="6sp"
                 tools:text="نظرات"
                 android:textSize="20dp" />
+        <Button
+            android:id="@+id/btnAddToReview"
+            android:layout_width="wrap_content"
+            android:layout_margin="18sp"
+            android:padding="8sp"
+            android:layout_height="wrap_content"
+            android:text="افزودن نظر"
+            tools:ignore="HardcodedText" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDetail"
@@ -116,14 +130,7 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btnAddToReview"
-                android:layout_width="wrap_content"
-                android:layout_margin="18sp"
-                android:padding="8sp"
-                android:layout_height="wrap_content"
-                android:text="افزودن نظر"
-                tools:ignore="HardcodedText" />
+
     </LinearLayout>
     </LinearLayout>
 
